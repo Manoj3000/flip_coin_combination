@@ -2,6 +2,7 @@
 
 echo "Welcome to flip coin combination program"
 
+#singlet
 declare -A singlet
 heads=0
 tails=0
@@ -28,6 +29,7 @@ tp=$(($tails*100/$loop))
 echo "Heads Percent : $hp%"
 echo "Tails Percent : $tp%"
 
+#doublet
 declare -A doublet
 
 hh=0
@@ -58,10 +60,10 @@ do
     esac
 done
 echo
-echo "hh won $hh"
-echo "ht won $ht"
-echo "th won $th"
-echo "tt won $tt"
+echo "HH won $hh"
+echo "HT won $ht"
+echo "TH won $th"
+echo "TT won $tt"
 
 hhp=$(($hh*100/$loop))
 htp=$(($ht*100/$loop))
@@ -72,3 +74,81 @@ echo "HH Percent : $hhp%"
 echo "HT Percent : $htp%"
 echo "TH Percent : $thp%"
 echo "TT Percent : $ttp%"
+
+#triplet
+declare -A triplet
+
+hhh=0
+hht=0
+hth=0
+htt=0
+thh=0
+tht=0
+tth=0
+ttt=0
+
+for((i=0;i<=$loop;i++))
+do
+	random=$((($RANDOM%8)+1))
+        case $random in
+		1)
+			((hhh++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		2)
+			((hht++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		3)
+			((hth++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		4)
+			((htt++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+        5)
+			((thh++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		6)
+			((tht++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		7)
+			((tth++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+		8)
+			((ttt++))
+        	Triplet[$random]=$((${Triplet[$random]}+1))
+	    ;;
+    esac
+done
+echo
+echo "HHH won $hhh"
+echo "HHT won $hht"
+echo "HTH won $hth"
+echo "HTT won $htt"
+echo "THH won $thh"
+echo "THT won $tht"
+echo "TTH won $tth"
+echo "TTT won $ttt"
+
+hhhp=$(($hhh*100/$loop))
+hhtp=$(($hht*100/$loop))
+hthp=$(($hth*100/$loop))
+http=$(($htt*100/$loop))
+thhp=$(($thh*100/$loop))
+thtp=$(($tht*100/$loop))
+tthp=$(($tth*100/$loop))
+tttp=$(($ttt*100/$loop))
+
+echo "HHH Percent : $hhhp%"
+echo "HHT Percent : $hhtp%"
+echo "HTH Percent : $hthp%"
+echo "HTT Percent : $http%"
+echo "THH Percent : $thhp%"
+echo "THT Percent : $thtp%"
+echo "TTH Percent : $tthp%"
+echo "TTT Percent : $tttp%"
